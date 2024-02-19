@@ -2,15 +2,20 @@
   <div class="chat-messages">
     <div class="grid gap-y-2">
       <!-- ? Chat Messages -->
-      <app-chat-message
-        text="Hola, ¿cómo estás?"
-      />
+      <app-chat-message text="Hola, ¿cómo estás?" />
 
-      <app-my-message
-        text="¡Hola! Estoy bien, gracias."
-      />
+      <app-my-message text="¡Hola! Estoy bien, gracias." />
+      <app-chat-message text="Hola, ¿cómo estás?222" />
+
+      <app-my-message text="¡Hola! Estoy bien, gracias.22" />
+
+      <app-typing-loader />
     </div>
   </div>
   <!-- ? MessageBox -->
 
+  <app-text-message-box
+    placeholder="Escribe un mensaje"
+    (onMessage)="handleMessage($event)"
+  />
 </div>
