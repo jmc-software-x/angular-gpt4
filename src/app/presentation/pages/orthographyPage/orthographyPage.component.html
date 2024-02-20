@@ -9,7 +9,11 @@
 
       <app-my-message text="¡Hola! Estoy bien, gracias.22" />
 
-      <app-typing-loader />
+      @for (message of messages(); track $index) { @if (message.isGpt) {
+      <app-chat-message [text]="message.text" />
+      } @else {
+      <app-my-message [text]="message.text" />
+      } } @if (isLoading()) { <app-typing-loader /> }
     </div>
   </div>
   <!-- ? MessageBox -->
@@ -19,8 +23,17 @@
     (onMessage)="handleMessage($event)"
   /> -->
 
-  <app-text-message-box-file
+  <!-- <app-text-message-box-file
     placeholder="Escribe un mensaje"
     (onMessage)="handleMessageWithFile($event)"
+  /> -->
+
+  <app-text-message-box-select
+    placeholder="Escribe un mensaje"
+    [options]="[
+      { id: '1', text: 'Opción 1' },
+      { id: '2', text: 'Opción 2' }
+    ]"
+    (onMessage)="handleMessageWithSelect($event)"
   />
 </div>

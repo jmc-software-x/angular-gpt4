@@ -1,3 +1,5 @@
+export * from './text-boxes/textMessageBoxSelect/textMessageBoxSelect.component';
+
 export * from './typingLoader/typingLoader.component';
 
 export * from './chat-bubbles/chatMessage/chatMessage.component';
