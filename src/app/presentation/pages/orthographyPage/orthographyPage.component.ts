@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { IMessage } from '@interfaces/index';
 import {
   ChatMessageComponent,
@@ -11,6 +11,7 @@ import {
   TextMessageBoxSelectComponent,
   TextMessageBoxEvent,
 } from '@components/index';
+import { OpenAIService } from '@services/openai.service';
 
 @Component({
   selector: 'app-orthography-page',
@@ -32,6 +33,7 @@ export default class OrthographyPageComponent {
     {text: 'Hello', isGpt: true},
   ]);
   public isLoading = signal<boolean>(false);
+  public openAIService = inject(OpenAIService);
 
   handleMessage(prompt: string) {
     console.log('message', prompt);
